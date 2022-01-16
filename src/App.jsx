@@ -1,22 +1,18 @@
-import React, {useEffect} from 'react';
-
+import React from 'react';
+import Header from './components/Header';
 import './App.css';
-import { xmlData } from './xml_data';
 
+import Messages from './components/Messages';
+import Footer from './components/Footer';
 
 function App() {
-  //let convert = xml2json;
-
-  useEffect(() => {
-    let convert = require('xml-js');
-    let result = convert.xml2js(xmlData, {compact: true, spaces: 4})
-    console.log(result);
-  }, []);
-  return (
-    <div className="App">
-      
-    </div>
-  );
+    return (
+        <div className='App'>
+            <Header />
+            <Messages />
+            <Footer />
+        </div>
+    );
 }
 
 export default App;
