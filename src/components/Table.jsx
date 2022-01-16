@@ -1,7 +1,20 @@
 import React from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 
-const Table = ({ mails }) => {
+const Table = ({ mails, loading }) => {
+    const addZeroStr = (number) => {
+        return number < 10 ? `0${number}` : `${number}`;
+    };
+    const showTime = (time) => {
+        let seconds = Date.parse(time);
+        let date = new Date(seconds);
+        return `${addZeroStr(date.getDate())}.${addZeroStr(
+            date.getMonth() + 1
+        )} ${addZeroStr(date.getHours())}:${addZeroStr(date.getMinutes())}`;
+    };
+    if (loading) {
+        return <h2>Loading...</h2>;
+    }
     return (
         <table>
             <thead>
@@ -13,10 +26,10 @@ const Table = ({ mails }) => {
             </thead>
 
             <tbody>
-                {mails.map((item) => {
+                {mails.map((item, index) => {
                     return (
-                        <tr>
-                            <td>{item.Received}</td>
+                        <tr key={index}>
+                            <td>{showTime(item.Received)}</td>
                             <td>{item.From}</td>
                             <td>
                                 <ReactAudioPlayer
@@ -24,7 +37,9 @@ const Table = ({ mails }) => {
                                     autoPlay
                                     controls
                                 />
-                                <span>{item.Duration}</span>
+                                <span className='duration-item'>
+                                    {item.Duration}
+                                </span>
                             </td>
                         </tr>
                     );

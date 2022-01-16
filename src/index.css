@@ -18,10 +18,17 @@ thead  tr{
   border-bottom: 2px solid red;
 }
 
+tbody tr:first-child {
+  color: red
+}
+
 .content {
   width: 1000px;
   min-height: calc(100vh - 70px - 64px);
   padding: 15px 0;
+}
+.duration-item {
+  color: black
 }
 
 

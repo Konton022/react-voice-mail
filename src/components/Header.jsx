@@ -5,7 +5,7 @@ const Header = () => {
         <nav>
             <div className='nav-wrapper grey lighten-4'>
                 <a
-                    className='brand-logo center grey-text text-darken-3'
+                    className='brand-logo left center grey-text text-darken-3'
                     href='!#'
                 >
                     ГОЛОСОВАЯ ПОЧТА
