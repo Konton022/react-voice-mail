@@ -1,30 +1,42 @@
-import React from 'react';
+import { prettyDOM } from '@testing-library/react';
+import React, { useState, useEffect } from 'react';
+import Select from 'react-select';
 
-const FilterForm = () => {
+const FilterForm = ({ period, setPeriod, periodOptions }) => {
     return (
-        <div className='row'>
-            <form className='col s12'>
-                <div className='row'>
-                    <div className='input-field col s6'>
-                        <input
-                            placeholder='Placeholder'
-                            id='first_name'
-                            type='text'
-                            className='validate'
-                        />
-                        <label htmlFor='first_name'>First Name</label>
-                    </div>
-                    <div className='input-field col s6'>
-                        <input
-                            id='last_name'
-                            type='text'
-                            className='validate'
-                        />
-                        <label htmlFor='last_name'>Last Name</label>
-                    </div>
+        <form className='col s12'>
+            <div className='row'>
+                <div className='input-field col s3'>
+                    <Select
+                        options={periodOptions}
+                        defaultValue={period}
+                        onChange={setPeriod}
+                    />
                 </div>
-            </form>
-        </div>
+                {/* <div className='input-field col s3'>
+                        <input
+                            id='phoneNumber'
+                            type='text'
+                            className='validate'
+                            value={phoneNumber}
+                        />
+                        <label htmlFor='phoneNumber'>Номер</label>
+                    </div>
+                    <div className='input-field col s3'>
+                        <input
+                            id='phoneNumber'
+                            type='text'
+                            className='validate'
+                            value={duration}
+                        />
+                        <label htmlFor='phoneNumber'>Длительность</label>
+                    </div> */}
+
+                {/* <button className='btn col s3' id='resetFilter'>
+                        Сбросить фильтр
+                    </button> */}
+            </div>
+        </form>
     );
 };
 
