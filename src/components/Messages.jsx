@@ -10,9 +10,33 @@ const Messages = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [mailsPerPage, setMailsPerPage] = useState(10);
 
+     //Get currnet posts
+     const indexOfLastMail = currentPage * mailsPerPage;
+     const indexOfFirstMail = indexOfLastMail - mailsPerPage;
+     const currentMails = mails.slice(indexOfFirstMail, indexOfLastMail);
+     const totalPages = Math.ceil(mails.length / mailsPerPage)
+
     const paginate = (numberPage) => {
         setCurrentPage(numberPage);
     };
+    const incPagePaginate = () => {
+        console.log('totalPages', totalPages, 'currentPage', currentPage);
+        if (currentPage >= totalPages) {
+            setCurrentPage(1)
+        }
+        else {setCurrentPage( preState => preState + 1)
+        }
+    }
+    const decPagePaginate = () => {
+        console.log('totalPages', totalPages, 'currentPage', currentPage);
+        if (currentPage <= 1) {
+            setCurrentPage(totalPages)
+        }
+        else {setCurrentPage( preState => preState - 1)
+        }
+    }
+    
+        
 
     useEffect(() => {
         //for fetching data from server:
@@ -33,10 +57,7 @@ const Messages = () => {
         //console.log(jObj.Root.Data);
     }, []);
 
-    //Get currnet posts
-    const indexOfLastMail = currentPage * mailsPerPage;
-    const indexOfFirstMail = indexOfLastMail - mailsPerPage;
-    const currentMails = mails.slice(indexOfFirstMail, indexOfLastMail);
+   
 
     return (
         <div className='container content'>
@@ -47,6 +68,8 @@ const Messages = () => {
                 totalMails={mails.length}
                 currentPage={currentPage}
                 paginate={paginate}
+                incPagePaginate={incPagePaginate}
+                decPagePaginate={decPagePaginate}
             />
         </div>
     );

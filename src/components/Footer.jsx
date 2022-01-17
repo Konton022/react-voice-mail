@@ -9,7 +9,7 @@ const Footer = () => {
                         className='grey-text text-darken-4'
                         href='https://savelev-konst.site'
                     >
-                        © 2022 savelev-konst.site
+                        © 2022 
                     </a>
                 </div>
             </div>
