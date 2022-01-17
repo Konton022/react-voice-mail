@@ -10,7 +10,7 @@ const Messages = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [mailsPerPage, setMailsPerPage] = useState(10);
 
-     //Get currnet posts
+     //Get current mails
      const indexOfLastMail = currentPage * mailsPerPage;
      const indexOfFirstMail = indexOfLastMail - mailsPerPage;
      const currentMails = mails.slice(indexOfFirstMail, indexOfLastMail);
@@ -20,7 +20,6 @@ const Messages = () => {
         setCurrentPage(numberPage);
     };
     const incPagePaginate = () => {
-        console.log('totalPages', totalPages, 'currentPage', currentPage);
         if (currentPage >= totalPages) {
             setCurrentPage(1)
         }
@@ -28,7 +27,6 @@ const Messages = () => {
         }
     }
     const decPagePaginate = () => {
-        console.log('totalPages', totalPages, 'currentPage', currentPage);
         if (currentPage <= 1) {
             setCurrentPage(totalPages)
         }
