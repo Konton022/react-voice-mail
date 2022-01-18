@@ -30,10 +30,9 @@ const FilterForm = ({ period, setPeriod, periodOptions }) => {
                         />
                         <label htmlFor='phoneNumber'>Длительность</label>
                     </div> */}
-
-                {/* <button className='btn col s3' id='resetFilter'>
-                        Сбросить фильтр
-                    </button> */}
+                <div className='input-field col s3'>
+                    <button className='btn reset-btn'>Сбросить фильтр</button>
+                </div>
             </div>
         </form>
     );
