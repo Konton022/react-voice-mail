@@ -5,6 +5,11 @@ const Table = ({ mails, loading }) => {
     const addZeroStr = (number) => {
         return number < 10 ? `0${number}` : `${number}`;
     };
+    const setDurationStr = (number) => {
+        const minutes = Math.floor(number / 60);
+        const seconds = number % 60;
+        return `${minutes}:${seconds}`;
+    };
     const showTime = (time) => {
         let seconds = Date.parse(time);
         let date = new Date(seconds);
@@ -35,12 +40,10 @@ const Table = ({ mails, loading }) => {
                                 <ReactAudioPlayer
                                     src='https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3'
                                     controls
-                                    onPlay={console.log('play')}
-                                    
                                 />
-                                <span className='duration-item'>
-                                    {item.Duration}
-                                </span>
+                            </td>
+                            <td className='ml-0'>
+                                {setDurationStr(item.Duration)}
                             </td>
                         </tr>
                     );

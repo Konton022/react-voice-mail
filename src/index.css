@@ -28,7 +28,8 @@ tbody tr:first-child {
   padding: 15px 0;
 }
 .duration-item {
-  color: black
+  color: black;
+  padding: auto;;
 }
 
 
