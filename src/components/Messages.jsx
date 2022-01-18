@@ -93,7 +93,9 @@ const Messages = () => {
         }
         setFiltredMails(mails.filter(item=>
            Date.parse(item.Received) >= Date.parse(`${period.value}-01`) && Date.parse(item.Received) <= Date.parse(`${period.value}-31`)
+           
         ))
+        setCurrentPage(1)
         
     }, [period.value]);
 

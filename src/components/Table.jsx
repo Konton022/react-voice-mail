@@ -33,9 +33,10 @@ const Table = ({ mails, loading }) => {
                             <td>{item.From}</td>
                             <td>
                                 <ReactAudioPlayer
-                                    src='/src/assets/audio1.mp3'
-                                    autoPlay
+                                    src='https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3'
                                     controls
+                                    onPlay={console.log('play')}
+                                    
                                 />
                                 <span className='duration-item'>
                                     {item.Duration}
