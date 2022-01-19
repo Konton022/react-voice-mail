@@ -24,7 +24,7 @@ const Messages = () => {
         label: 'Все время',
     });
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [duration, setDuration] = useState('');
+    const [duration, setDuration] = useState({ value: 'all', label: 'Все' });
 
     const periodOptions = [
         { value: 'allPeriod', label: 'Все время' },
@@ -41,7 +41,12 @@ const Messages = () => {
         { value: '2016-02', label: 'За февраль 2016 года' },
         { value: '2016-01', label: 'За январь 2016 года' },
         { value: '2015', label: 'За 2015 год' },
-
+    ];
+    const durationOptions = [
+        { value: 'all', label: 'Все' },
+        { value: 60, label: 'До 1 минуты' },
+        { value: 120, label: 'До 2х минут' },
+        { value: 180, label: 'До 3х минут' },
     ];
 
     const paginate = (numberPage) => {
@@ -62,6 +67,11 @@ const Messages = () => {
         }
     };
 
+    const handleResetFilter = () => {
+        setFiltredMails(mails);
+        setPeriod({ value: 'allPeriod', label: 'Все время' });
+    };
+
     useEffect(() => {
         //for fetching data from server:
         // setLoadind(true)
@@ -80,23 +90,34 @@ const Messages = () => {
         setMails(jObj.Root.Data);
     }, []);
 
-    useEffect(()=> {
-        setFiltredMails(mails)
-    }, [mails])
+    useEffect(() => {
+        setFiltredMails(mails);
+    }, [mails]);
+    //set filter by duration
+    useEffect(() => {
+        if (duration.value === 'all') {
+            setFiltredMails(mails);
+            return;
+        }
+        setFiltredMails(mails.filter((item) => item.Duration >= duration));
+    }, [duration.value]);
 
     // set filter by period
     useEffect(() => {
-        console.log(period.value);
-        if (period.value === 'allPeriod'){
-            setFiltredMails(mails)
-            return
+        if (period.value === 'allPeriod') {
+            setFiltredMails(mails);
+            return;
         }
-        setFiltredMails(mails.filter(item=>
-           Date.parse(item.Received) >= Date.parse(`${period.value}-01`) && Date.parse(item.Received) <= Date.parse(`${period.value}-31`)
-           
-        ))
-        setCurrentPage(1)
-        
+        setFiltredMails(
+            mails.filter(
+                (item) =>
+                    Date.parse(item.Received) >=
+                        Date.parse(`${period.value}-01`) &&
+                    Date.parse(item.Received) <=
+                        Date.parse(`${period.value}-31`)
+            )
+        );
+        setCurrentPage(1);
     }, [period.value]);
 
     return (
@@ -105,6 +126,10 @@ const Messages = () => {
                 period={period}
                 setPeriod={setPeriod}
                 periodOptions={periodOptions}
+                duration={duration}
+                setDuration={setDuration}
+                durationOptions={durationOptions}
+                handleResetFilter={handleResetFilter}
             />
             <Table mails={currentMails} loading={loading} />
             <Pagination
