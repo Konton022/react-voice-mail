@@ -8,6 +8,8 @@ const FilterForm = ({
     duration,
     setDuration,
     durationOptions,
+    phoneNumber,
+    setPhoneNumber,
     handleResetFilter,
 }) => {
     return (
@@ -21,15 +23,16 @@ const FilterForm = ({
                         onChange={setPeriod}
                     />
                 </div>
-                {/* <div className='input-field col s3'>
+                <div className='input-field col s3'>
                     <input
-                        id='phoneNumber'
+                        placeholder='Phone Number'
                         type='text'
                         className='validate'
                         value={phoneNumber}
+                        onChange={(event)=>setPhoneNumber(event.target.value)}
                     />
-                    <label htmlFor='phoneNumber'>Номер</label>
-                </div> */}
+                    
+                </div>
                 <div className='input-field col s3'>
                     <Select
                         options={durationOptions}

@@ -16,15 +16,15 @@ const Messages = () => {
     const indexOfFirstMail = indexOfLastMail - mailsPerPage;
     const currentMails = filtredMails.slice(indexOfFirstMail, indexOfLastMail);
     const totalPages = Math.ceil(filtredMails.length / mailsPerPage);
-
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [duration, setDuration] = useState({ value: 'all', label: 'Все' });
     //Set filter options
 
     const [period, setPeriod] = useState({
         value: 'allPeriod',
         label: 'Все время',
     });
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [duration, setDuration] = useState({ value: 'all', label: 'Все' });
+    
 
     const periodOptions = [
         { value: 'allPeriod', label: 'Все время' },
@@ -70,6 +70,8 @@ const Messages = () => {
     const handleResetFilter = () => {
         setFiltredMails(mails);
         setPeriod({ value: 'allPeriod', label: 'Все время' });
+        setDuration({ value: 'all', label: 'Все' })
+        setPhoneNumber('')
     };
 
     useEffect(() => {
@@ -93,6 +95,17 @@ const Messages = () => {
     useEffect(() => {
         setFiltredMails(mails);
     }, [mails]);
+
+    // set filter by phoneNumber
+    useEffect(()=>{
+        if (!phoneNumber) {
+            setFiltredMails(filtredMails);
+            return;
+        }
+
+        setFiltredMails(filtredMails.filter(item => item.From.includes(phoneNumber)))
+    }, [phoneNumber])
+
     //set filter by duration
     useEffect(() => {
         if (duration.value === 'all') {
@@ -129,6 +142,8 @@ const Messages = () => {
                 duration={duration}
                 setDuration={setDuration}
                 durationOptions={durationOptions}
+                phoneNumber={phoneNumber}
+                setPhoneNumber={setPhoneNumber}
                 handleResetFilter={handleResetFilter}
             />
             <Table mails={currentMails} loading={loading} />
