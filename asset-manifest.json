@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-voice-mail/static/css/main.5bb75210.css",
+    "main.js": "/react-voice-mail/static/js/main.7ad6200b.js",
+    "index.html": "/react-voice-mail/index.html",
+    "main.5bb75210.css.map": "/react-voice-mail/static/css/main.5bb75210.css.map",
+    "main.7ad6200b.js.map": "/react-voice-mail/static/js/main.7ad6200b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5bb75210.css",
+    "static/js/main.7ad6200b.js"
+  ]
+}
