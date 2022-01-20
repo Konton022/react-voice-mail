@@ -44,9 +44,9 @@ const Messages = () => {
     ];
     const durationOptions = [
         { value: 'all', label: 'Все' },
-        { value: 60, label: 'До 1 минуты' },
-        { value: 120, label: 'До 2х минут' },
+        { value: 60, label: 'До 1ой минуты' },
         { value: 180, label: 'До 3х минут' },
+        { value: 300, label: 'До 5ти минут' },
     ];
 
     const paginate = (numberPage) => {
@@ -96,10 +96,10 @@ const Messages = () => {
     //set filter by duration
     useEffect(() => {
         if (duration.value === 'all') {
-            setFiltredMails(mails);
+            setFiltredMails(filtredMails);
             return;
         }
-        setFiltredMails(mails.filter((item) => item.Duration >= duration));
+        setFiltredMails(filtredMails.filter((item) => item.Duration <= duration.value));
     }, [duration.value]);
 
     // set filter by period
