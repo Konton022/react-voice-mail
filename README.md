@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+### Тестовое задание. Junior-разработчик.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Задача:
+Сделать приложение для работы с входящими голосовыми сообщениями — сверстать и запрограммировать.
+Разрешается использовать любые css-фреймворки (Bootstrap, Zurb Foundation, Semantic UI и т.д.)
 
-In the project directory, you can run:
+На странице, я как пользователь, хочу:
 
-### `npm start`
+1. Видеть информацию о сообщениях:
+a. дату и времени получения;
+b. телефонный номер отправителя;
+c. продолжительности голосового сообщения.
+Список сообщений должен быть разбит на страницы — по 10 штук на одной странице.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. Прослушивать сообщения;
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. Сохранять сообщения себе на ПК (реализация данного пункта не обязательно, но будет дополнительным плюсом);
 
-### `npm test`
+4. Фильтровать сообщения по
+a. периоду получения (за все время, за сегодня, за вчера, за последнюю неделю, за текущий месяц, за прошлый месяц) — сделать селектбоксом;
+b. номеру отправителя — номер телефона вводится в свободной форме, сделать обычным инпутом;
+c. длительности сообщения (до 1 минуты, до 3 минут, до 5 минут, до 10 минут) — сделать селектбоксом.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+Требования к верстке и коду:
+Вёрстка статичная, не адаптивная. Ширина контентной зоны — 1000px. Страница должна корректно выглядеть в последних версиях браузеров Google Chrome, Mozilla FireFox и Microsoft Edge
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Прототип страницы
+ 
+Данные о сообщениях мы получаем с сервера, в формате XML — XML приложен к задаче (data.xml).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Структура файла:
+1. Received — дата получения;
+2. From — телефонный номер отправителя;
+3. To — email получателя;
+4. Date — дата получения в формате ISO 8601
+5. MIME — информация об аудиофайле, включая метаданные;
+6. Duration — длительность сообщения в секундах;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+В качестве аудио-файла взять любой аудио трек на свое усмотрение.

@@ -1,5 +1,4 @@
 import React from 'react';
-import cn from 'classnames';
 
 const Pagination = ({ mailsPerPage, totalMails, currentPage, paginate, incPagePaginate, decPagePaginate }) => {
     const pageNumbers = [];
